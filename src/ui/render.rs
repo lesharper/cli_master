@@ -17,7 +17,7 @@ pub fn render(frame: &mut Frame, app: &App) {
         ])
         .split(frame.area());
 
-    // Рендеринг заголовка с помощью figlet-rs
+    // Рендеринг заголовка
     let standard_font = FIGfont::standard().expect("Failed to load standard FIGfont");
     let figure = standard_font
         .convert("CLI MASTER")
@@ -26,11 +26,10 @@ pub fn render(frame: &mut Frame, app: &App) {
     frame.render_widget(title, chunks[0]);
 
     // Рендеринг описания
-    let description =
-        Paragraph::new("Welcome to CLI_MASTER - Your Ultimate CLI Utility Aggregator!")
-            .white()
-            .centered();
-    frame.render_widget(description, chunks[1]);
+    let desc = Paragraph::new("Welcome to CLI_MASTER - Your Ultimate CLI Utility Aggregator!")
+        .white()
+        .centered();
+    frame.render_widget(desc, chunks[1]);
 
     // Рендеринг в зависимости от состояния
     match app.state {
